@@ -227,7 +227,7 @@ message Config {
     KATAKANA_INPUT_MODE = 2;  // Kotoeri behavior
   }
   optional ShiftKeyModeSwitch shift_key_mode_switch = 59
-      [default = ASCII_INPUT_MODE];
+      [default = OFF];
 
   enum NumpadCharacterForm {
     NUMPAD_INPUT_MODE = 0;

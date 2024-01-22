@@ -48,7 +48,7 @@
 namespace mozc {
 namespace gui {
 namespace {
-constexpr size_t kMaxEntrySize = 10000;
+constexpr size_t kMaxEntrySize = 320000;
 
 int GetTableHeight(QTableWidget *widget) {
   // Dragon Hack:
@@ -236,10 +236,10 @@ void GenericTableEditorDialog::Import() {
     return;
   }
 
-  const qint64 kMaxSize = 100 * 1024;
+  const qint64 kMaxSize = 10 * 1024 * 1024;
   if (file.size() >= kMaxSize) {
     QMessageBox::warning(this, windowTitle(),
-                         tr("The specified file is too large (>=100K byte)"));
+                         tr("The specified file is too large (>=10M byte)"));
     return;
   }
 

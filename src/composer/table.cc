@@ -59,8 +59,8 @@ namespace {
 
 using ::mozc::composer::internal::DeleteSpecialKeys;
 
-constexpr char kDefaultPreeditTableFile[] = "system://romanji-hiragana.tsv";
-constexpr char kRomajiPreeditTableFile[] = "system://romanji-hiragana.tsv";
+constexpr char kDefaultPreeditTableFile[] = "system://romaji-hangul.tsv";
+constexpr char kRomajiPreeditTableFile[] = "system://romaji-hangul.tsv";
 // Table for Kana combinations like "か゛" → "が".
 constexpr char kKanaCombinationTableFile[] = "system://kana.tsv";
 

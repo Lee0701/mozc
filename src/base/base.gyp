@@ -388,7 +388,7 @@
             '<(mozc_oss_src_dir)/data/preedit/godan-hiragana.tsv',
             '<(mozc_oss_src_dir)/data/preedit/qwerty_mobile-halfwidthascii.tsv',
             '<(mozc_oss_src_dir)/data/preedit/qwerty_mobile-hiragana.tsv',
-            '<(mozc_oss_src_dir)/data/preedit/romanji-hiragana.tsv',
+            '<(mozc_oss_src_dir)/data/preedit/romaji-hangul.tsv',
             '<(mozc_oss_src_dir)/data/preedit/toggle_flick-halfwidthascii.tsv',
             '<(mozc_oss_src_dir)/data/preedit/toggle_flick-halfwidthascii_ios.tsv',
             '<(mozc_oss_src_dir)/data/preedit/toggle_flick-hiragana.tsv',

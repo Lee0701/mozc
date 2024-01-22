@@ -37,7 +37,7 @@
 #include "composer/internal/composition.h"
 #include "composer/table.h"
 
-ABSL_FLAG(std::string, table, "system://romanji-hiragana.tsv",
+ABSL_FLAG(std::string, table, "system://romaji-hangul.tsv",
           "preedit conversion table file.");
 
 int main(int argc, char **argv) {

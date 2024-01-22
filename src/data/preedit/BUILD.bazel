@@ -45,7 +45,7 @@ filegroup(
         "notouch-hiragana.tsv",
         "qwerty_mobile-halfwidthascii.tsv",
         "qwerty_mobile-hiragana.tsv",
-        "romanji-hiragana.tsv",
+        "romaji-hangul.tsv",
         "toggle_flick-halfwidthascii.tsv",
         "toggle_flick-halfwidthascii_ios.tsv",
         "toggle_flick-hiragana.tsv",

@@ -41,7 +41,7 @@
 #include "protocol/config.pb.h"
 #include "transliteration/transliteration.h"
 
-ABSL_FLAG(std::string, table, "system://romanji-hiragana.tsv",
+ABSL_FLAG(std::string, table, "system://romaji-hangul.tsv",
           "preedit conversion table file.");
 
 using ::mozc::commands::Request;
