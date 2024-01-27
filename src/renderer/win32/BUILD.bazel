@@ -145,6 +145,7 @@ mozc_cc_library(
     tags = MOZC_TAGS.WIN_ONLY,
     target_compatible_with = ["@platforms//os:windows"],
     deps = [
+        ":win32_font_util",
         ":win32_image_util",
         ":win32_renderer_util",
         "//base:const",
@@ -168,6 +169,7 @@ mozc_cc_library(
         "//visibility:private",  # Only private by automation, not intent. Owner may accept CLs adding visibility. See go/scheuklappen#explicit-private.
     ],
     deps = [
+        ":win32_font_util",
         "//base:coordinates",
         "//base:logging",
         "//bazel/win32:d2d1",
@@ -248,17 +250,26 @@ mozc_cc_library(
 )
 
 mozc_cc_library(
+    name = "win32_font_util",
+    srcs = [],
+    hdrs = ["win32_font_util.h"],
+    tags = MOZC_TAGS.WIN_ONLY,
+    target_compatible_with = ["@platforms//os:windows"],
+)
+
+mozc_cc_library(
     name = "win32_image_util",
     srcs = ["win32_image_util.cc"],
     hdrs = ["win32_image_util.h"],
-    copts = copts_wtl(),
     tags = MOZC_TAGS.WIN_ONLY,
     target_compatible_with = ["@platforms//os:windows"],
     deps = [
         "//base:coordinates",
         "//base:logging",
         "//base:util",
-        "//third_party/wtl",
+        "//bazel/win32:gdi32",
+        "//bazel/win32:user32",
+        "@com_microsoft_wil//:wil",
     ],
 )
 
@@ -283,7 +294,6 @@ mozc_cc_library(
 mozc_cc_test(
     name = "win32_renderer_util_test",
     srcs = ["win32_renderer_util_test.cc"],
-    copts = copts_wtl(),
     tags = MOZC_TAGS.WIN_ONLY,
     target_compatible_with = ["@platforms//os:windows"],
     deps = [
@@ -293,7 +303,6 @@ mozc_cc_test(
         "//protocol:commands_cc_proto",
         "//protocol:renderer_cc_proto",
         "//testing:gunit_main",
-        "//third_party/wtl",
         "@com_google_absl//absl/base",
     ],
 )

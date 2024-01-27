@@ -27,31 +27,43 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef MOZC_REQUEST_CONVERSION_REQUEST_UTIL_H_
-#define MOZC_REQUEST_CONVERSION_REQUEST_UTIL_H_
+#ifndef MOZC_RENDERER_WIN32_WIN32_FONT_UTIL_H_
+#define MOZC_RENDERER_WIN32_WIN32_FONT_UTIL_H_
 
-#include "composer/composer.h"
-#include "protocol/commands.pb.h"
-#include "request/conversion_request.h"
+#include <windows.h>
 
 namespace mozc {
+namespace renderer {
+namespace win32 {
 
-class ConversionRequestUtil {
- public:
-  ConversionRequestUtil() = delete;
-  ConversionRequestUtil(const ConversionRequestUtil &) = delete;
-  ConversionRequestUtil &operator=(const ConversionRequestUtil &) = delete;
-
-  static bool IsHandwriting(const ConversionRequest &request) {
-    return request.has_composer() &&
-           !request.composer().GetHandwritingCompositions().empty();
+inline LOGFONT GetMessageBoxLogFont() {
+  NONCLIENTMETRICS info = {};
+  info.cbSize = CCSIZEOF_STRUCT(NONCLIENTMETRICS, iPaddedBorderWidth);
+  if (::SystemParametersInfo(SPI_GETNONCLIENTMETRICS, sizeof(info), &info, 0)) {
+    return info.lfMessageFont;
+  } else {
+    // Fallback font.
+    return {
+        .lfHeight = -12,
+        .lfWidth = 0,
+        .lfEscapement = 0,
+        .lfOrientation = 0,
+        .lfWeight = 400,
+        .lfItalic = 0,
+        .lfUnderline = 0,
+        .lfStrikeOut = 0,
+        .lfCharSet = 1,
+        .lfOutPrecision = 0,
+        .lfClipPrecision = 0,
+        .lfQuality = 0,
+        .lfPitchAndFamily = 0,
+        .lfFaceName = L"Segoe UI",
+    };
   }
+}
 
-  static bool IsAutoPartialSuggestionEnabled(const ConversionRequest &request) {
-    return request.request().auto_partial_suggestion();
-  }
-};
-
+}  // namespace win32
+}  // namespace renderer
 }  // namespace mozc
 
-#endif  // MOZC_REQUEST_CONVERSION_REQUEST_UTIL_H_
+#endif  // MOZC_RENDERER_WIN32_WIN32_FONT_UTIL_H_
