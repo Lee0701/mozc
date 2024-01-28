@@ -43,39 +43,39 @@
 # uint16 POSMatcher::GetFirstNameId() { ... }
 # bool   POSMatcher::IsFirstName(uint16 id) { ... }
 
-Functional ^(助詞|助動詞|動詞,非自立|名詞,非自立|形容詞,非自立|動詞,接尾|名詞,接尾|形容詞,接尾)
+Functional ^(조사|동사|명사|형용사|접미사,동사파생|접미사,명사파생|접미사,형용사파생)
 
-Unknown    名詞,サ変接続
+Unknown    その他
 
-FirstName  名詞,固有名詞,人名,名
-LastName   名詞,固有名詞,人名,姓
+FirstName  명사,고유명사
+LastName   명사,고유명사
 
-Number      名詞,数,アラビア数字
-KanjiNumber 名詞,数,漢数字
+Number      기호,숫자
+KanjiNumber 수사
 
 # Used in CandidateFilter
-WeakCompoundNounPrefix 接頭詞,名詞接続,
-WeakCompoundVerbPrefix 接頭詞,動詞接続,
-WeakCompoundFillerPrefix フィラー,
-WeakCompoundNounSuffix ^名詞,(サ変接続|ナイ形容詞語幹|一般|副詞可能|形容詞語幹)
-WeakCompoundVerbSuffix 動詞,自立
+WeakCompoundNounPrefix 접두사,체언,
+WeakCompoundVerbPrefix 접두사,체언,
+WeakCompoundFillerPrefix その他,
+WeakCompoundNounSuffix ^명사,일반
+WeakCompoundVerbSuffix 동사
 
 # Used in Segmenter
 # if the following particles exist at the beggining of a segment,
 # concat them with the next content word.
 # ex.
 # にかく => に書く, not に|書く
-AcceptableParticleAtBeginOfSegment ^助詞,*,*,*,*,*,(が|で|と|に|にて|の|へ|より|も|と|から|は|や)$
+AcceptableParticleAtBeginOfSegment ^조사,*,*,*,*,*,*$
 
 # Used in UserHistoryRewriter
-JapanesePunctuations 記号,(句点|読点)
+JapanesePunctuations 기호,(구두점)
 
 # Used in SymbolRewriter
-OpenBracket 記号,括弧開
-CloseBracket 記号,括弧閉
+OpenBracket 기호,여는괄호
+CloseBracket 기호,닫는괄호
 
 # Used in SingleKanjiRewriter
-GeneralSymbol 記号,一般,
+GeneralSymbol 기호,기타,
 
 Zipcode 特殊,郵便番号
 
@@ -86,40 +86,40 @@ IsolatedWord 特殊,短縮よみ
 SuggestOnlyWord 特殊,サジェストのみ
 
 # Used in UsageRewriter
-ContentWordWithConjugation ^(動詞,自立,*,*,五段|動詞,自立,*,*,一段|形容詞,自立)
+ContentWordWithConjugation ^(동사|형용사)
 
 # 末尾語
-SuffixWord ^(助詞|助動詞|動詞,非自立|動詞,接尾|形容詞,非自立|形容詞,接尾|動詞,自立,*,*,サ変・スル)
+SuffixWord ^(조사|동사|접미사,동사파생|형용사|접미사,형용사파생)
 
 # 助数詞
-CounterSuffixWord 名詞,接尾,助数詞
+CounterSuffixWord 명사,단위
 
 # 固有名詞
-UniqueNoun ^名詞,固有名詞
+UniqueNoun ^명사,고유명사
 
 # 一般名詞
-GeneralNoun ^名詞,一般,*,*,*,*,*$
+GeneralNoun ^명사,일반,*,*,*,*,*$
 
 # 代名詞
-Pronoun ^名詞,代名詞,
+Pronoun ^대명사,
 
 # Content Noun
-ContentNoun ^名詞,(一般|固有名詞|副詞可能|サ変接続),
+ContentNoun ^명사,(일반|고유명사),
 
 # Noun prefix
-NounPrefix ^接頭詞,名詞接続,
+NounPrefix ^접두사,체언,
 
 # EOS symbols
-EOSSymbol ^(記号,(句点|読点|アルファベット|一般|括弧開|括弧閉))|^(名詞,数,(アラビア数字|区切り文字))
+EOSSymbol ^(기호,(구두점|외국어|기타|여는괄호|닫는괄호|숫자))|^수사
 
 # 副詞
-Adverb ^副詞,
+Adverb ^부사,
 
 # 副詞節 suffix
-AdverbSegmentSuffix ^助詞,*,*,*,*,*,(から|で|と|に|にて|の|へ|を)$
+AdverbSegmentSuffix ^조사,*,*,*,*,*,*$
 
 # 並立助詞
-ParallelMarker ^助詞,並立助詞
+ParallelMarker ^조사,접속
 
 # These rules are used for removing candidate "書います", "書いたい",
 # "書いすぎ", "書った"etc
@@ -129,7 +129,7 @@ TeSuffix (助詞,接続助詞,*,*,*,*,(て|ちゃ)|助詞,並立助詞,*,*,*,*,�
 
 # 助動詞,助詞
 # For "書いX", if X is VerbSuffix and X is not TeSuffix, it is invalid.
-VerbSuffix (^動詞,非自立|^助詞,接続助詞|^助動詞)
+VerbSuffix (^동사|^조사,접속)
 
 # カ行イ音便 タ接続 "書い"-て "書い"-た
 # カ行促音便 タ接続 "言っ"-て "言っ"-た
