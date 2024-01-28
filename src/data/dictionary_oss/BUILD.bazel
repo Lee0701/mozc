@@ -38,6 +38,7 @@ exports_files([
     "dictionary00.txt",
     "dictionary01.txt",
     "dictionary02.txt",
+    "dictionary03.txt",
     "id.def",
     "reading_correction.tsv",
     "regression_test_result.tsv",
@@ -51,6 +52,7 @@ filegroup(
         ":dictionary00.txt",
         ":dictionary01.txt",
         ":dictionary02.txt",
+        ":dictionary03.txt",
         "//dictionary:zip_code_data",
     ],
 )
@@ -70,6 +72,7 @@ filegroup(
         ":dictionary00.txt",
         ":dictionary01.txt",
         ":dictionary02.txt",
+        ":dictionary03.txt",
         ":suffix.txt",
     ],
 )
