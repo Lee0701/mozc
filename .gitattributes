@@ -2,7 +2,6 @@
 # not only on mac/Linux but also on Windows.
 # See https://stackoverflow.com/a/42135910
 * text=auto eol=lf
-
 # Known text files
 *.bazel text
 *.bzl text
@@ -30,7 +29,6 @@
 *.wxi text
 *.wxs text
 *.xml text
-
 # Known binary files
 *.a binary
 *.deflate binary
@@ -39,9 +37,9 @@
 *.bmp binary
 *.ico binary
 *.tiff binary
-
 # Workaround for GitHub graph timeouts
 # Treat large dictionary data files as binary.
 # https://github.com/google/mozc/issues/789
 src/data/dictionary_oss/connection_single_column.txt binary
 src/data/test/dictionary/connection_single_column.txt binary
+dictionary*.txt filter=lfs diff=lfs merge=lfs -text
