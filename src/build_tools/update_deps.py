@@ -89,9 +89,9 @@ QT6 = ArchiveInfo(
 )
 
 NDK_LINUX = ArchiveInfo(
-    url='https://dl.google.com/android/repository/android-ndk-r28-linux.zip',
-    size=723148067,
-    sha256='a186b67e8810cb949514925e4f7a2255548fb55f5e9b0824a6430d012c1b695b',
+    url='https://dl.google.com/android/repository/android-ndk-r29-beta4-linux.zip',
+    size=783674133,
+    sha256='c5db6031a549b5274eed920c45ee3c7da1ac3f1f416cbb512dd9d88417bdf009',
 )
 
 NDK_MAC = ArchiveInfo(

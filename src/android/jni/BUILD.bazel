@@ -74,6 +74,11 @@ mozc_cc_binary(
     tags = MOZC_TAGS.ANDROID_ONLY,
     target_compatible_with = _TARGET_COMPATIBLE_WITH,
     visibility = ["//visibility:private"],
+    linkopts = [
+        "-Wl",
+        "-z",
+        "max-page-size=16384",
+    ],
     deps = [
         ":mozcjni",
     ],
